@@ -1,0 +1,53 @@
+/*
+  Name: Sauvegarde.exe
+  Copyright: -
+  Author: SIVADIER Sebastien
+  Date: 17/04/08 14:09
+  Description: Défini les composants de la fenetre
+*/
+#include "ressource.h"
+
+
+
+IDI_APPICON             ICON    DISCARDABLE     "sauvegarde.ico"
+
+
+IDM_MENU MENU DISCARDABLE 
+{
+ POPUP "&Configuration"
+ {
+  MENUITEM "&Reinitialiser\tCtrl+R", CM_INIT
+  MENUITEM "&Ouvrir...\tCtrl+O", CM_OUVRIR
+  MENUITEM "&Enregistrer\tCtrl+S", CM_SAUV
+  MENUITEM SEPARATOR
+  MENUITEM "&Quitter\tCtrl+Q", CM_QUITTER
+ }
+
+ POPUP "&Aide"
+ {
+  MENUITEM "A &propos\tCtrl+A", CM_APROPOS
+ }
+}
+
+
+IDM_TRAY MENU DISCARDABLE 
+{
+ POPUP "popup"
+ {
+  MENUITEM "Configurer", CM_SHOW
+  MENUITEM "Desactiver temporairement", CM_INACTIVE
+  MENUITEM "A &propos\tCtrl+A", CM_APROPOS
+  MENUITEM SEPARATOR
+  MENUITEM "&Quitter\tCtrl+Q", CM_QUITTER
+ }
+}
+
+
+IDR_ACCEL ACCELERATORS MOVEABLE PURE 
+{
+    "R",            CM_INIT,        VIRTKEY, CONTROL, NOINVERT
+    "O",            CM_OUVRIR,        VIRTKEY, CONTROL, NOINVERT
+    "S",            CM_SAUV,     VIRTKEY, CONTROL, NOINVERT
+    "Q",            CM_QUITTER,           VIRTKEY, CONTROL, NOINVERT
+    "A",            CM_APROPOS,          VIRTKEY, CONTROL, NOINVERT
+}

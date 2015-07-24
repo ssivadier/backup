@@ -1,0 +1,42 @@
+# Project: Sauvegarde
+# Makefile created by Dev-C++ 4.9.9.2
+
+CPP  = g++.exe -D__DEBUG__
+CC   = gcc.exe -D__DEBUG__
+WINDRES = windres.exe
+RES  = Sauvegarde_private.res
+OBJ  = main.o fxgenerales.o newprocess.o ihm.o $(RES)
+LINKOBJ  = main.o fxgenerales.o newprocess.o ihm.o $(RES)
+LIBS =  -L"C:/Dev-Cpp/lib" -mwindows -d  -lgmon -pg  -g3 
+INCS =  -I"C:/Dev-Cpp/include" 
+CXXINCS =  -I"C:/Dev-Cpp/lib/gcc/mingw32/3.4.2/include"  -I"C:/Dev-Cpp/include/c++/3.4.2/backward"  -I"C:/Dev-Cpp/include/c++/3.4.2/mingw32"  -I"C:/Dev-Cpp/include/c++/3.4.2"  -I"C:/Dev-Cpp/include" 
+BIN  = Sauvegarde.exe
+CXXFLAGS = $(CXXINCS)   -pg -g3
+CFLAGS = $(INCS)   -pg -g3
+RM = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before Sauvegarde.exe all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o "Sauvegarde.exe" $(LIBS)
+
+main.o: main.c
+	$(CC) -c main.c -o main.o $(CFLAGS)
+
+fxgenerales.o: fxgenerales.c
+	$(CC) -c fxgenerales.c -o fxgenerales.o $(CFLAGS)
+
+newprocess.o: newprocess.c
+	$(CC) -c newprocess.c -o newprocess.o $(CFLAGS)
+
+ihm.o: ihm.c
+	$(CC) -c ihm.c -o ihm.o $(CFLAGS)
+
+Sauvegarde_private.res: Sauvegarde_private.rc ressource.rc 
+	$(WINDRES) -i Sauvegarde_private.rc --input-format=rc -o Sauvegarde_private.res -O coff 
